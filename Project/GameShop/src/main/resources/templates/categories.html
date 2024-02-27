@@ -1,0 +1,27 @@
+<h2 style="margin-top: 20px">Categories</h2>
+<div class="table_div">
+    <table class="table table-bordered w-auto h-auto">
+        <thead class="table-header">
+        <tr>
+            <th>Category id</th>
+            <th>Category name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cat : ${categories}">
+            <td th:text="${cat.categoryId}"></td>
+            <td th:text="${cat.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary addBtn">
+        <a style="text-decoration: none; color: white" href="/category/add">Add Category</a>
+    </button>
+</div>
+
+<style>
+    .addBtn{
+        width: max-content;
+        height: 40px;
+    }
+</style>

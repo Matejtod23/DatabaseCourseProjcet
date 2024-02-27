@@ -1,0 +1,19 @@
+<h2 style="margin-top: 20px">Game Review Summary</h2>
+<table class="table table-bordered w-auto h-auto">
+    <thead class="table-header">
+    <tr>
+        <th>Game id</th>
+        <th>Game title</th>
+        <th>Number of reviews</th>
+        <th>Average rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="info : ${avgRatings}">
+        <td th:text="${info.gameId}"></td>
+        <td th:text="${info.title}"></td>
+        <td th:text="${info.numReviews}"></td>
+        <td th:text="${info.averageRating}"></td>
+    </tr>
+    </tbody>
+</table>

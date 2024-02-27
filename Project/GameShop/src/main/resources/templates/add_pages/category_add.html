@@ -1,0 +1,22 @@
+<style>
+    h2{
+        text-align: center;
+    }
+    #categoryForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+    }
+    #btnSubmit{
+        margin-top: 10px;
+    }
+</style>
+<h2>Insert Category</h2>
+
+<form id="categoryForm" class="form-control" th:action="@{/category/add}" method="post">
+    <label class="form-check-label" for="name">Insert a category name</label>
+    <input type="text" class="input-group-text" name="name" id="name">
+
+    <input id="btnSubmit" type="submit" value="Submit">
+</form>

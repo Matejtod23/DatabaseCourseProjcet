@@ -1,0 +1,29 @@
+<h2 style="margin-top: 20px">Publishers</h2>
+<div class="table_div">
+    <table class="table table-bordered w-auto h-auto">
+        <thead class="table-header">
+        <tr>
+            <th>Publisher id</th>
+            <th>Publisher name</th>
+            <th>Publisher country</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pub : ${publishers}">
+            <td th:text="${pub.publisherId}"></td>
+            <td th:text="${pub.name}"></td>
+            <td th:text="${pub.country}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary addBtn">
+        <a style="text-decoration: none; color: white" href="/publisher/add">Add Publisher</a>
+    </button>
+</div>
+
+<style>
+    .addBtn{
+        width: max-content;
+        height: 40px;
+    }
+</style>

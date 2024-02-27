@@ -1,0 +1,63 @@
+<style>
+  h2{
+    text-align: center;
+  }
+  #gameForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+<h2>Add Game</h2>
+
+<form id="gameForm" th:action="@{/game/save}" method="post" >
+  <!-- Title -->
+  <div class="form-group w-25">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+
+  <!-- Price -->
+  <div class="form-group w-25">
+    <label for="price">Price:</label>
+    <input type="number" class="form-control" id="price" name="price" required>
+  </div>
+
+  <!-- Platform -->
+  <div class="form-group w-25">
+    <label for="platform">Platform:</label>
+    <input type="text" class="form-control" id="platform" name="platform" required>
+  </div>
+
+  <!-- Release Date -->
+  <div class="form-group w-25">
+    <label for="releaseDate">Release Date:</label>
+    <input type="date" class="form-control" id="releaseDate" name="releaseDate"  required>
+  </div>
+
+  <!-- Publisher ID -->
+  <div class="form-group w-25">
+    <label for="publisher">Publishers:</label>
+    <select class="form-control" id="publisher" name="publisherId" >
+      <!-- Iterate over categories and populate the options -->
+      <option th:each="publisher : ${publishers}" th:value="${publisher.publisherId }" th:text="${publisher.name}"></option>
+    </select>
+  </div>
+
+  <!-- Categories -->
+  <div class="form-group w-25">
+    <label for="categories">Categories:</label>
+    <select multiple class="form-control" id="categories" name="categories" >
+      <!-- Iterate over categories and populate the options -->
+      <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+    </select>
+  </div>
+
+  <div class="form-group w-25">
+    <label for="releaseDate">Game poster:</label>
+    <input type="text" class="form-control" id="gamePoster" name="gamePoster"  required>
+  </div>
+
+  <!-- Submit Button -->
+  <input type="submit" value="Add Game" class="btn btn-primary">
+</form>

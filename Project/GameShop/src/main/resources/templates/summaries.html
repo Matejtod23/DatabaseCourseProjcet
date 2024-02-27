@@ -1,0 +1,100 @@
+<div class="table_container">
+    <div class="table_one">
+        <h2 style="margin-top: 20px">Customer Order Summary</h2>
+        <table class="table table-bordered w-auto h-auto">
+            <thead class="table-header">
+            <tr>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Order Date</th>
+                <th>Total Amount</th>
+                <th>Payment Status</th>
+                <th>Order ID</th>
+                <th>Title</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="summary : ${orderSummaries}">
+                <td th:text="${summary.customerName}"></td>
+                <td th:text="${summary.email}"></td>
+                <td th:text="${summary.orderDate}"></td>
+                <td th:text="${summary.totalAmount}"></td>
+                <td th:text="${summary.paymentStatus}"></td>
+                <td th:text="${summary.orderId}"></td>
+                <td th:text="${summary.title}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tables_two_three">
+        <h2 style="margin-top: 20px">Game Review Summary and Customer Order Summary</h2>
+        <table class="table table-bordered table1">
+            <thead class="table-header">
+            <tr>
+                <th>Game Title</th>
+                <th>Game rating</th>
+                <th>Game review Comment</th>
+                <th>Date posted</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="info : ${gameReviewInfo}">
+                <td th:text="${info.title}"></td>
+                <td th:text="${info.rating}"></td>
+                <td th:text="${info?.text}"></td>
+                <td th:text="${info.datePosted}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table2">
+            <thead class="table-header">
+            <tr>
+                <th>Game Title</th>
+                <th>Game platform</th>
+                <th>Release Date</th>
+                <th>Game Price</th>
+                <th>Publisher name</th>
+                <th>Publisher Country</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="info : ${gamePublisherInfo}">
+                <td th:text="${info.title}"></td>
+                <td th:text="${info.platform}"></td>
+                <td th:text="${info.releaseDate}"></td>
+                <td th:text="${info.price}"></td>
+                <td th:text="${info.publisherName}"></td>
+                <td th:text="${info.publisherCountry}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<style>
+    .table_container{
+        display: grid;
+    }
+    .table_one{
+        margin: 0 auto;
+    }
+    .tables_two_three{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .tables_two_three h2{
+        grid-column: span 2;
+    }
+    .table1{
+        max-width: 600px;
+        max-height: 300px;
+    }
+
+    .table2{
+        max-width: 800px;
+    }
+</style>

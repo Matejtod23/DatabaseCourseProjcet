@@ -1,0 +1,21 @@
+<h2 style="margin-top: 20px">Customer Order Info</h2>
+<table class="table table-bordered w-auto h-auto">
+    <thead class="table-header">
+    <tr>
+        <th>Customer id</th>
+        <th>Customer name</th>
+        <th>Customer email</th>
+        <th>number of orders</th>
+        <th>average games per order</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="info : ${customerInfo}">
+        <td th:text="${info.customerId}"></td>
+        <td th:text="${info.name}"></td>
+        <td th:text="${info?.email}"></td>
+        <td th:text="${info.numOrders}"></td>
+        <td th:text="${info.avgGamesPerOrder}"></td>
+    </tr>
+    </tbody>
+</table>

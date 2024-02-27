@@ -1,0 +1,83 @@
+<div class="table_one_and_two">
+    <h2 style="margin-top: 20px">Game Review Summary and Customer Order Info</h2>
+    <table class="table table-bordered w-auto h-auto">
+        <thead class="table-header">
+        <tr>
+            <th>Customer id</th>
+            <th>Customer name</th>
+            <th>Average rating</th>
+            <th>Total orders</th>
+            <th>Total amount paid</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="info : ${ratingsPerCustomer}">
+            <td th:text="${info.customerId}"></td>
+            <td th:text="${info.name}"></td>
+            <td th:text="${info.averageRating}"></td>
+            <td th:text="${info.totalOrders}"></td>
+            <td th:text="${info.totalAmountPaid}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered w-auto h-auto">
+        <thead class="table-header">
+        <tr>
+            <th>Customer id</th>
+            <th>Customer name</th>
+            <th>Customer email</th>
+            <th>number of orders</th>
+            <th>average games per order</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="info : ${customerInfo}">
+            <td th:text="${info.customerId}"></td>
+            <td th:text="${info.name}"></td>
+            <td th:text="${info?.email}"></td>
+            <td th:text="${info.numOrders}"></td>
+            <td th:text="${info.avgGamesPerOrder}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table_three">
+    <h2 style="margin-top: 20px">Game Review Summary</h2>
+    <table class="table table-bordered w-auto h-auto">
+        <thead class="table-header">
+        <tr>
+            <th>Game id</th>
+            <th>Game title</th>
+            <th>Number of reviews</th>
+            <th>Average rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="info : ${avgRatings}">
+            <td th:text="${info.gameId}"></td>
+            <td th:text="${info.title}"></td>
+            <td th:text="${info.numReviews}"></td>
+            <td th:text="${info.averageRating}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table_one_and_two{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+        gap: 10px;
+    }
+    .table_one_and_two h2{
+        grid-column: span 2;
+    }
+
+    .table_three table{
+        margin: 0 auto;
+        max-height: 700px;
+    }
+</style>

@@ -1,0 +1,147 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa; /* Bootstrap light gray background */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #495057; /* Bootstrap text color */
+    }
+
+    .gameContainer {
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff; /* Bootstrap white background for content */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+        border-radius: 8px;
+    }
+
+    .game-card {
+        border: 1px solid #dee2e6; /* Bootstrap border color */
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+    }
+
+    .game-card:hover {
+        transform: scale(1.02);
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    h1, h2 {
+        color: #343a40; /* Bootstrap dark gray text color */
+        margin-bottom: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        max-height: 600px;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+
+    .card-body {
+        padding: 20px;
+        background-color: #f8f9fa; /* Light gray background for card body */
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    .catList ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .catList li {
+        margin-bottom: 5px;
+    }
+
+    .category-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .category-badge {
+        background-color: #007bff; /* Bootstrap primary button color */
+        color: #ffffff; /* Bootstrap white text color */
+        padding: 8px 12px;
+        border-radius: 20px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .category-badge:hover {
+        background-color: #0056b3; /* Slightly darker shade on hover */
+    }
+
+    .buy-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff; /* Bootstrap primary button color */
+        color: #ffffff; /* Bootstrap white text color */
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+    }
+
+    .buy-button:hover {
+        background-color: #0056b3; /* Slightly darker shade on hover */
+    }
+</style>
+
+
+<div class="container gameContainer">
+    <div class="game-card">
+        <div class="text-center">
+            <h1 th:text="${game.title}"></h1>
+            <img th:src="${game.gamePoster}" alt="Game Poster">
+        </div>
+
+        <div class="card-body">
+            <h2>Details</h2>
+            <p><strong>Price:</strong> $<span th:text="${game.price}"></span></p>
+            <p><strong>Platform:</strong> <span th:text="${game.platform}"></span></p>
+            <p><strong>Release Date:</strong><span th:text="${#temporals.day(game.releaseDate)+'-'+#temporals.month(game.releaseDate)+'-'+#temporals.year(game.releaseDate)}"></span></p>
+            <p><strong>Publisher:</strong> <span th:text="${game.publisher.name}"></span></p>
+        </div>
+
+        <div class="card-body catList">
+            <h2>Categories</h2>
+            <ul class="category-list">
+                <li th:each="category : ${game.categories}" class="category-badge" th:text="${category.name}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <form th:action="@{'/order/create/{id}' (id=${game.gameId})}"
+              th:method="POST">
+            <button class="btn btn-primary">Buy Game</button>
+        </form>
+<!--        <a th:href="@{'order/create/{id}' (id=${game.gameId})}" class="buy-button" style="text-decoration: none; color: white">Buy Now</a>-->
+    </div>
+
+
+
+</div>

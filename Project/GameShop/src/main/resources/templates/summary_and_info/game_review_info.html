@@ -1,0 +1,19 @@
+<h2 style="margin-top: 20px">Game Review Summary</h2>
+<table class="table table-bordered w-auto h-auto">
+    <thead class="table-header">
+    <tr>
+        <th>Game Title</th>
+        <th>Game rating</th>
+        <th>Game review Comment</th>
+        <th>Date posted</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="info : ${gameReviewInfo}">
+        <td th:text="${info.title}"></td>
+        <td th:text="${info.rating}"></td>
+        <td th:text="${info?.text}"></td>
+        <td th:text="${info.datePosted}"></td>
+    </tr>
+    </tbody>
+</table>

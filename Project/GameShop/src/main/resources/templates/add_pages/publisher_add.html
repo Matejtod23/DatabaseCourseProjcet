@@ -1,0 +1,24 @@
+<style>
+    h2{
+        text-align: center;
+    }
+    #addPublisherForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+    }
+    .btnSubmit0{
+        margin-top: 10px;
+    }
+</style>
+<h2>Insert Publisher</h2>
+<form id="addPublisherForm" class="form-control" th:action="@{/publisher/add}" method="post">
+    <label class="form-check-label" for="name">Insert publisher name</label>
+    <input type="text" class="input-group-text" name="name" id="name">
+
+    <label class="form-check-label" for="country">Insert publisher country</label>
+    <input type="text" class="input-group-text" name="country" id="country">
+
+    <input class="btnSubmit" type="submit" value="Submit">
+</form>
